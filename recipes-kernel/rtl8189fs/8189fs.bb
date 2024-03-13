@@ -1,13 +1,13 @@
 SUMMARY = "RTL8189FS wifi module"
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://Makefile;beginline=1;endline=1;md5=daad6f7f7a0a286391cd7773ccf79340"
+LIC_FILES_CHKSUM = "file://Makefile;beginline=1;endline=1;md5=8e0ee9938408d68917fc9a8dd7a44ce7"
 
 inherit module
 
 SRC_URI = "git://github.com/jwrdegoede/rtl8189ES_linux.git;protocol=https;branch=rtl8189fs \
            file://0001-Fix-build-problems-in-Yocto.patch \
            "
-SRCREV = "62c31d577c385316bb99107f60e63169dacc37db"
+SRCREV = "5d523593f41c0b8d723c6aa86b217ee1d0965786"
 
 S = "${WORKDIR}/git"
 

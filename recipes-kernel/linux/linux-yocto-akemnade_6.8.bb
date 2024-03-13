@@ -55,14 +55,14 @@ require recipes-kernel/linux/linux-yocto.inc
 
 # Override SRC_URI in a copy of this recipe to point at a different source
 # tree if you do not want to build from Linus' tree.
-SRC_URI = "git://github.com/akemnade/linux.git;protocol=https;nocheckout=1;branch=kobo/merged-5.10;name=machine"
+SRC_URI = "git://github.com/akemnade/linux.git;protocol=https;nocheckout=1;branch=kobo/drm-merged-6.8;name=machine"
 
 # defconfig copied from:
-# https://github.com/akemnade/linux/blob/kobo/merged-5.10/arch/arm/configs/kobo_defconfig
+# https://github.com/akemnade/linux/blob/kobo/drm-merged-6.8/arch/arm/configs/kobo_defconfig
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 SRC_URI += " file://defconfig "
 
-LINUX_VERSION ?= "5.10"
+LINUX_VERSION ?= "6.8"
 LINUX_VERSION_EXTENSION_append = "-akemnade"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
@@ -70,7 +70,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 # Modify SRCREV to a different commit hash in a copy of this recipe to
 # build a different release of the Linux kernel.
 # tag: v4.2 64291f7db5bd8150a74ad2036f1037e6a0428df2
-SRCREV_machine="7d2632dc809f70583e164fa863acaa5af5bf688a"
+SRCREV_machine="941e725995136bdb897f793607a3af0a915a96f8"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
@@ -83,36 +83,3 @@ KCONFIG_MODE="--alldefconfig"
 
 # For some reason this is needed
 DEPENDS += " lzop-native"
-
-
-#
-# This is a bit of a hack to do roughly what linux-imx-headers does for
-# linux-imx, from: https://patchwork.openembedded.org/patch/131375/
-#
-IMX_UAPI_HEADERS = "mxc_asrc.h mxc_dcic.h mxcfb.h mxc_mlb.h mxc_sim_interface.h \
-                    mxc_v4l2.h ipu.h videodev2.h pxp_device.h pxp_dma.h isl29023.h"
-
-do_install_append () {
-   # Install i.MX specific uapi headers
-   oe_runmake headers_install INSTALL_HDR_PATH=${B}${exec_prefix}
-   install -d ${D}${exec_prefix}/include/linux
-   for UAPI_HDR in ${IMX_UAPI_HEADERS}; do
-       find ${B}${exec_prefix}/include -name ${UAPI_HDR} -exec cp {} ${D}${exec_prefix}/include/linux \;
-       ls ${D}${exec_prefix}/include/linux
-       echo "copy ${UAPI_HDR} done"
-   done
-}
-
-sysroot_stage_all_append () {
-    # FIXME: Remove videodev2.h as conflict with linux-libc-headers
-    find ${D}${exec_prefix}/include -name videodev2.h -exec mv {} ${B} \;
-    # Install SOC related uapi headers to sysroot
-    sysroot_stage_dir ${D}${exec_prefix}/include ${SYSROOT_DESTDIR}${exec_prefix}/include
-    # FIXME: Restore videodev2 back
-    if [ -e ${B}/videodev2.h ]; then
-        mv ${B}/videodev2.h ${D}${exec_prefix}/include/linux/
-    fi
-}
-
-PACKAGES += "${PN}-soc-headers"
-FILES_${PN}-soc-headers = "${exec_prefix}/include"
