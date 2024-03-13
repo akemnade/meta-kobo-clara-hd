@@ -14,7 +14,6 @@ SDKIMAGE_FEATURES_append = " \
 "
 
 IMAGE_INSTALL_append = " \
-    clara-hd-udev-rules \
     u-boot-kobo-fw-utils \
     sudo \
     networkmanager \
