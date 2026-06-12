@@ -121,7 +121,7 @@ do_compile () {
                     for binary in ${UBOOT_BINARIES}; do
                         k=$(expr $k + 1);
                         if [ $k -eq $i ]; then
-                            cp ${B}/${config}-${type}/${binary} ${B}/${config}/u-boot-${type}.${UBOOT_SUFFIX}
+                            cp ${B}/${config}-${type}/${binary} ${B}/${config}-${type}/u-boot-${type}.${UBOOT_SUFFIX}
                         fi
                     done
                     unset k
