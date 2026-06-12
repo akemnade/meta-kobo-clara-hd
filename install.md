@@ -15,7 +15,7 @@ See the instructions in [user guide] section 3.2.
 ```bash
 mkdir imx-linux-5.10.9_1.0.0
 cd imx-linux-5.10.9_1.0.0
-repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-gatesgarth -m imx-5.10.9-1.0.0.xml
+repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-whinlatter -m imx-6.18.2-1.0.0.xml
 ```
 
 ### Install meta-kobo-clara-hd
