@@ -2,6 +2,7 @@ From 909f2a7ef0e72a2f1696b8b6b88c700b4308c1fa Mon Sep 17 00:00:00 2001
 From: Kevin O'Rourke <misc1-github@caboose.org.uk>
 Date: Sun, 31 Jan 2021 11:30:53 +0100
 Subject: [PATCH] Add Kobo Clara HD board.
+Upstream-Status: Pending
 
 ---
  arch/arm/cpu/armv7/mx6/Kconfig                |    7 +

@@ -2,6 +2,7 @@ From eac249dd8d598be91d53078e89c78091350d8f8e Mon Sep 17 00:00:00 2001
 From: Kevin O'Rourke <misc1-github@caboose.org.uk>
 Date: Sun, 1 Nov 2020 17:06:50 +0100
 Subject: [PATCH] Fix U-boot issue with newer libfdt.
+Upstream-Status: Pending
 
 ---
  include/fdt.h        | 3 ++-
