@@ -40,7 +40,7 @@ Assuming your current directory is bld-kobo-clara-hd:
 cd ../sources
 git clone https://github.com/rauc/meta-rauc.git
 cd meta-rauc
-git checkout gatesgarth
+git checkout whinlatter
 cd ../../bld-kobo-clara-hd
 bitbake-layers add-layer ../sources/meta-rauc/
 ```
