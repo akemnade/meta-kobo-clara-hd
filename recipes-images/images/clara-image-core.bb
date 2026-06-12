@@ -9,11 +9,11 @@ IMAGE_FEATURES += " \
     hwcodecs \
     x11-base \
 "
-SDKIMAGE_FEATURES_append = " \
+SDKIMAGE_FEATURES:append = " \
     staticdev-pkgs \
 "
 
-IMAGE_INSTALL_append = " \
+IMAGE_INSTALL:append = " \
     u-boot-kobo-fw-utils \
     sudo \
     networkmanager \
@@ -23,7 +23,7 @@ IMAGE_INSTALL_append = " \
     rauc \
 "
 
-IMAGE_INSTALL_remove += " virtual/perf"
+IMAGE_INSTALL:remove += " virtual/perf"
 
 inherit extrausers
 EXTRA_USERS_PARAMS = "usermod -L root"
