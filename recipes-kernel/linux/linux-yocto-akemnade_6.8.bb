@@ -59,27 +59,29 @@ SRC_URI = "git://github.com/akemnade/linux.git;protocol=https;nocheckout=1;branc
 
 # defconfig copied from:
 # https://github.com/akemnade/linux/blob/kobo/drm-merged-6.8/arch/arm/configs/kobo_defconfig
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI += " file://defconfig "
 
 LINUX_VERSION ?= "6.8"
-LINUX_VERSION_EXTENSION_append = "-akemnade"
+LINUX_VERSION_EXTENSION:append = "-akemnade"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 # Modify SRCREV to a different commit hash in a copy of this recipe to
 # build a different release of the Linux kernel.
 # tag: v4.2 64291f7db5bd8150a74ad2036f1037e6a0428df2
-SRCREV_machine="941e725995136bdb897f793607a3af0a915a96f8"
+SRCREV_machine = "941e725995136bdb897f793607a3af0a915a96f8"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
 # Override COMPATIBLE_MACHINE to include your machine in a copy of this recipe
 # file. Leaving it empty here ensures an early explicit build failure.
-COMPATIBLE_MACHINE_kobo-clara-hd = "kobo-clara-hd"
+COMPATIBLE_MACHINE:kobo-clara-hd = "kobo-clara-hd"
 
 # See the comment at the top of this recipe.
-KCONFIG_MODE="--alldefconfig"
+KCONFIG_MODE = "--alldefconfig"
+
+KERNEL_DANGLING_FEATURES_WARN_ONLY = "1"
 
 # For some reason this is needed
 DEPENDS += " lzop-native"

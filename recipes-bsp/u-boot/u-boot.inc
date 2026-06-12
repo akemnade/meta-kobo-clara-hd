@@ -9,7 +9,7 @@ DEPENDS += "kern-tools-native"
 
 inherit uboot-config uboot-extlinux-config uboot-sign deploy cml1
 
-DEPENDS += "swig-native python-native"
+DEPENDS += "swig-native python3-native"
 
 EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}" V=1'
 EXTRA_OEMAKE += 'HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}"'
@@ -116,12 +116,12 @@ do_compile () {
                 j=$(expr $j + 1);
                 if [ $j -eq $i ]
                 then
-                    oe_runmake -C ${S} O=${B}/${config} ${config}
-                    oe_runmake -C ${S} O=${B}/${config} ${UBOOT_MAKE_TARGET}
+                    oe_runmake -C ${S} O=${B}/${config}-${type} ${config}
+                    oe_runmake -C ${S} O=${B}/${config}-${type} ${UBOOT_MAKE_TARGET}
                     for binary in ${UBOOT_BINARIES}; do
                         k=$(expr $k + 1);
                         if [ $k -eq $i ]; then
-                            cp ${B}/${config}/${binary} ${B}/${config}/u-boot-${type}.${UBOOT_SUFFIX}
+                            cp ${B}/${config}-${type}/${binary} ${B}/${config}/u-boot-${type}.${UBOOT_SUFFIX}
                         fi
                     done
                     unset k
@@ -226,7 +226,7 @@ do_install () {
 
 }
 
-FILES_${PN} = "/boot ${sysconfdir} ${datadir}"
+FILES:${PN} = "/boot ${sysconfdir} ${datadir}"
 
 do_deploy () {
     if [ -n "${UBOOT_CONFIG}" ]

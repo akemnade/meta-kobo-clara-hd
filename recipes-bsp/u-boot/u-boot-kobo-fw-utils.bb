@@ -1,9 +1,9 @@
 require u-boot-fw-utils_2019.07.bb
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRCBRANCH = "e60k02"
-SRC_URI = "git://git.goldelico.com/letux-uboot.git;protocol=https;branch=${SRCBRANCH} \
+SRC_URI = "https://github.com/goldelico/letux-uboot.git;protocol=https;branch=${SRCBRANCH} \
            file://0001-Fix-U-boot-issue-with-newer-libfdt.patch \
            file://0002-Add-Kobo-Clara-HD-board.patch \
            file://0003-Fix-broken-HOSTCC-when-building-tools.patch \
@@ -17,7 +17,7 @@ inherit fsl-u-boot-localversion
 LOCALVERSION ?= "-5.4.24-2.1.0"
 
 PROVIDES += "u-boot-fw-utils"
-RPROVIDES_${PN} += "u-boot-fw-utils"
+RPROVIDES:${PN} += "u-boot-fw-utils"
 
 # The envtools target is just called env in older U-boot
 do_compile () {
@@ -26,6 +26,6 @@ do_compile () {
 }
 
 # Install our fw_env.config rather than the default.
-do_install_append () {
+do_install:append () {
     install -m 0644 ${WORKDIR}/fw_env.config ${D}${sysconfdir}/fw_env.config
 }

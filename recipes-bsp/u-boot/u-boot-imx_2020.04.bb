@@ -4,12 +4,12 @@
 DESCRIPTION = "i.MX U-Boot suppporting i.MX reference boards."
 require u-boot-common.inc
 require u-boot.inc
-inherit pythonnative
+#inherit pythonnative
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 PROVIDES += "u-boot"
-DEPENDS_append = " dtc-native"
+DEPENDS:append = " dtc-native"
 
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a4263"
@@ -28,7 +28,7 @@ LOCALVERSION ?= "-5.4.24-2.1.0"
 
 BOOT_TOOLS = "imx-boot-tools"
 
-do_deploy_append_mx8m () {
+do_deploy:append:mx8m () {
     # Deploy u-boot-nodtb.bin and fsl-imx8mq-XX.dtb, to be packaged in boot binary by imx-boot
     if [ -n "${UBOOT_CONFIG}" ]
     then
