@@ -14,13 +14,13 @@ SDKIMAGE_FEATURES:append = " \
 "
 
 IMAGE_INSTALL:append = " \
-    u-boot-kobo-fw-utils \
     sudo \
     networkmanager \
     tzdata \
     screen \
     xev \
     rauc \
+    u-boot-kobo-extlinux \
 "
 
 IMAGE_INSTALL:remove += " virtual/perf"

@@ -2,8 +2,8 @@
 # Copyright 2017-2020 NXP
 
 DESCRIPTION = "i.MX U-Boot suppporting Kobo boards."
-require u-boot-common.inc
-require u-boot.inc
+require recipes-bsp/u-boot/u-boot-common.inc
+require recipes-bsp/u-boot/u-boot.inc
 inherit python3native 
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
