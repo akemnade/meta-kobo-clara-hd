@@ -1,6 +1,6 @@
 # Installation/setup instructions
 
-This is based on [Embedded Linux for i.MX], release 5.10.9_1.0.0 with Linux kernel 5.10.9 and Yocto 3.2 Gatesgarth.
+This is based on [Embedded Linux for i.MX], release 5.10.9_1.0.0 with Linux kernel 5.10.9 and Yocto 6.0 Wrynose.
 
 ## Install Yocto/NXP BSP
 
@@ -15,7 +15,7 @@ See the instructions in [user guide] section 3.2.
 ```bash
 mkdir imx-linux-5.10.9_1.0.0
 cd imx-linux-5.10.9_1.0.0
-repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-whinlatter -m imx-6.18.2-1.0.0.xml
+repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-wrynose -m imx-6.18.2-1.0.0.xml
 ```
 
 ### Install meta-kobo-clara-hd
