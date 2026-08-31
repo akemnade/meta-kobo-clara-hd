@@ -19,11 +19,13 @@ IMAGE_INSTALL:append = " \
     tzdata \
     screen \
     xev \
-    rauc \
+    kernel-modules \
+    gadgetconf \
     u-boot-kobo-extlinux \
 "
 
 IMAGE_INSTALL:remove += " virtual/perf"
+IMAGE_FSTYPES:append = " wic.zst"
 
 inherit extrausers
 EXTRA_USERS_PARAMS = "usermod -L root"

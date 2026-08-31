@@ -20,8 +20,6 @@ SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            "
 SRCREV = "1f55e1ef7b1ac1e0cdb1375e787f287c33599220"
 
-inherit fsl-u-boot-localversion
-
 LOCALVERSION ?= "-kobo"
 
 BOOT_TOOLS = "imx-boot-tools"
