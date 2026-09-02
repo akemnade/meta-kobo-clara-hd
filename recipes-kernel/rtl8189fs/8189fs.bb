@@ -1,13 +1,14 @@
 SUMMARY = "RTL8189FS wifi module"
 LICENSE = "GPL-2.0-only"
-LIC_FILES_CHKSUM = "file://Makefile;beginline=1;endline=1;md5=8e0ee9938408d68917fc9a8dd7a44ce7"
+LIC_FILES_CHKSUM = "file://os_dep/linux/os_intfs.c;beginline=1;endline=14;md5=d1415c223f48d77507154f01e7fa002f"
 
 inherit module
 
 SRC_URI = "git://github.com/jwrdegoede/rtl8189ES_linux.git;protocol=https;branch=rtl8189fs \
            file://0001-Fix-build-problems-in-Yocto.patch \
+           file://0001-Makefile-change-defaults-to-have-less-debug-noise-an.patch \
            "
-SRCREV = "5d523593f41c0b8d723c6aa86b217ee1d0965786"
+SRCREV = "a5ad16ed1d64fe1facce95bbcc2360c8c846a681"
 
 
 # The inherit of module.bbclass will automatically name module packages with

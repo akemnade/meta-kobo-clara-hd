@@ -55,22 +55,23 @@ require recipes-kernel/linux/linux-yocto.inc
 
 # Override SRC_URI in a copy of this recipe to point at a different source
 # tree if you do not want to build from Linus' tree.
-SRC_URI = "git://github.com/akemnade/linux.git;protocol=https;nocheckout=1;branch=kobo/drm-merged-6.8;name=machine"
+SRC_URI = "git://github.com/akemnade/linux.git;protocol=https;nocheckout=1;branch=kobo/drm-merged-7.1;name=machine"
 
 # defconfig copied from:
-# https://github.com/akemnade/linux/blob/kobo/drm-merged-6.8/arch/arm/configs/kobo_defconfig
+# https://github.com/akemnade/linux/blob/kobo/drm-merged-7.1/arch/arm/configs/kobo_defconfig
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI += " file://defconfig "
+SRC_URI += " file://0001-hv-remove-kconfigcheck-confusing-line-from-Kconfig.patch "
 
-LINUX_VERSION ?= "6.8"
-LINUX_VERSION_EXTENSION:append = "-akemnade"
+LINUX_VERSION ?= "7.1.10"
+LINUX_VERSION_EXTENSION:append = "-epdc-drm"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 # Modify SRCREV to a different commit hash in a copy of this recipe to
 # build a different release of the Linux kernel.
 # tag: v4.2 64291f7db5bd8150a74ad2036f1037e6a0428df2
-SRCREV_machine = "941e725995136bdb897f793607a3af0a915a96f8"
+SRCREV_machine = "8c68d420f2a30cfdd6673d971e8ae325e9835fe6"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 
