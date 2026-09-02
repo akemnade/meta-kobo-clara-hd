@@ -24,7 +24,7 @@ IMAGE_INSTALL:append = " \
     u-boot-kobo-extlinux \
 "
 
-IMAGE_INSTALL:remove += " virtual/perf"
+IMAGE_INSTALL:remove = " virtual/perf"
 IMAGE_FSTYPES:append = " wic.zst"
 
 inherit extrausers
