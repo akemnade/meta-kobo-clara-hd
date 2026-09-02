@@ -28,4 +28,4 @@ IMAGE_INSTALL:remove += " virtual/perf"
 IMAGE_FSTYPES:append = " wic.zst"
 
 inherit extrausers
-EXTRA_USERS_PARAMS = "usermod -L root"
+#EXTRA_USERS_PARAMS = "usermod -L root"
